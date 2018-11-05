@@ -4,3 +4,11 @@
 .col-3{
   background-color: #D3D3D3;
 }
+.col-custom-1{
+  flex: 0 0 2.08333%;
+  max-width: 2.08333%;
+}
+.col-custom-22{
+  flex: 0 0 95.8383%;
+  max-width: 95.8383%;
+}

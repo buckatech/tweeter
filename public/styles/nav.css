@@ -16,17 +16,41 @@
   height: 3rem;
 }
 .inputText{
+  margin-top: 1rem;
   width: 100%;
+  padding: 0.2rem 0.4rem;
+}
+.tweetButton{
+  margin-bottom: 1rem;
 }
 .tweetHeadRow{
-  border: solid;
-  border-width: 0.1rem
+  border-top: solid;
+  border-right: solid;
+  border-left: solid;
+  border-width: 0.05rem;
+  padding-top: 0.3rem;
 }
-.tweetInBig{
-  background-color: blue;
+.tweetBodyRow{
+  border-right: solid;
+  border-left: solid;
+  border-width: 0.05rem
+}
+.tweetFootRow{
+  border-right: solid;
+  border-left: solid;
+  border-bottom: solid;
+  border-width: 0.05rem
+}
+.btn-primary{
+  margin-bottom: 5px;
+}
+.tweetHeadBig{
   font-size: 1.5rem;
   border-bottom: solid;
+  border-bottom-width: 0.1rem;
+  margin-bottom: 5px;
 }
-.tweetInSmall{
-  background-color: green;
+.charCount{
+  float: right;
+  padding-right: 0.5rem;
 }
