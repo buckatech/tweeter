@@ -1,0 +1,14 @@
+.navbar-custom{
+  background-color: #00a087 ;
+  height: 80px;
+  padding: 0.25rem 2rem;
+}
+.navbar-text{
+  color: #e8fdff;
+  padding-left: 10px;
+  font-size: 2rem;
+}
+.headImg{
+  height: 80px;
+  width: 80px;
+}
