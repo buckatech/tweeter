@@ -3,20 +3,32 @@
   height: 3.5rem;
   background-color: blue;
   margin-top: .3rem;
-  border-radius: 0.4rem;
 }
-.tweetBodyRow{
+.tweetContentHead{
+  opacity: 0.9;
   height: 5rem;
+  border: hidden;
+  border-width: 0.05rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  border-color: #9b9b9bd3;
 }
-.tweetBodyRow2{
+.tweetContentBody{
   height: 6rem;
 }
-.tweetFootRow2{
+.tweetContentFoot{
+  border: 0.05rem hidden;
   height: 2.1rem;
-  background-color: white;
+  border-top-color: #9b9b9bd3;
   border-top: solid;
-  border-top-width: 0.05rem; 
-  border-top-color: rgba(216, 216, 216, 0.918);
+  border-top-width: 0.05rem;
+  opacity: 0.8;
+  background-color: #ebebeb;
+  border-right: hidden 0.05rem;
+  border-left: hidden 0.05rem;
+  border-bottom: hidden 0.05rem;
+  border-bottom-right-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
 }
 .miniEmail{
   margin-top: .3rem;
@@ -34,4 +46,18 @@
 .dateStamp{
   margin-top: 0.3rem;
   color: rgba(48, 48, 48, 0.781);
+}
+.opacParent{
+  opacity: 0.8;
+  border: solid; 
+  background-color: #ebebeb;
+  border-color: #9b9b9bd3;
+  border-width: 0.05rem;
+  margin-bottom: 5px;
+  border-radius: 0.5rem;
+  z-index: 1;
+}
+.opacParent:hover{
+  opacity: 1;
+  border-color: black;
 }
