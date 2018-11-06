@@ -90,13 +90,18 @@ function createTweetElement(data) {
   return html
   }
 $(document).ready(function() {
-  $('#subButton').on('click', function() {
-    console.log('fired')
-  })
   $('#textAreaInput').keyup(charCount)
   $('#textAreaInput').keydown(charCount)
   data.forEach(element => {
     $('#appendTarget').append(createTweetElement(element))
   });
-  
-})
+  $( "#target" ).submit(function( event ) {
+    alert( "Handler for .submit() called." );
+    event.preventDefault();
+    serialized = $(this).serialize();
+    $.ajax('/', {
+      method:'POST',
+      data: serialized
+    })
+  });
+});
