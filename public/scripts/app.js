@@ -14,62 +14,89 @@ function charCount() {
   }
   $('#charLimit').text(cs)
 }
-data={
-  "user": {
-    "name": "Newton",
-    "avatars": {
-      "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-      "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-      "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+const data = [
+  {
+    "user": {
+      "name": "Newton",
+      "avatars": {
+        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
+        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
+      },
+      "handle": "@SirIsaac"
     },
-    "handle": "@SirIsaac"
+    "content": {
+      "text": "If I have seen further it is by standing on the shoulders of giants"
+    },
+    "created_at": 1461116232227
   },
-  "content": {
-    "text": "If I have seen further it is by standing on the shoulders of giants"
+  {
+    "user": {
+      "name": "Descartes",
+      "avatars": {
+        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
+        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
+        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
+      },
+      "handle": "@rd" },
+    "content": {
+      "text": "Je pense , donc je suis"
+    },
+    "created_at": 1461113959088
   },
-  "created_at": 1461116232227
-}
-console.log(data)
-function createTweetElement() {
-  let html = 
-`<div class="row BodyRow1">
-<div class="col-3"></div>
-<div class="col-6">
-  <div class="row subrow">
-    <div class="col-1"></div>
-    <div class="col-10 opacParent">
-      <div class="row tweetContentHead">
-        <div class="col-2"><img class="bodyImg" src="/images/bird.png" alt=""></div>
-        <div class="col-8">
-          <h3 class="tweetH3">${data.user.name}</h3>
-        </div>
-        <div class="col-2"><span class="miniEmail">${data.user.handle}</span></div>
-      </div>
-      <div class="row tweetContentBody">
-        <div class="col-12">
-          <p class="tweetContent">${data.content.text}</p>
-        </div>
-      </div>
-      <div class="row tweetContentFoot">
-        <div class="col-custom-1"></div>
-        <div class="col-custom-22">
-          <p class="dateStamp">${data.created_at}</p>
-        </div>
-        <div class="col-custom-1"></div>
-      </div>
+  {
+    "user": {
+      "name": "Johann von Goethe",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@johann49"
+    },
+    "content": {
+      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+    },
+    "created_at": 1461113796368
+  }
+];
+
+let html
+function createTweetElement(data) {
+  html = 
+`<div class="col-1"></div>
+<div class="col-10 opacParent">
+  <div class="row tweetContentHead">
+    <div class="col-2"><img class="bodyImg" src="/images/bird.png" alt=""></div>
+    <div class="col-8">
+      <h3 class="tweetH3">${data.user.name}</h3>
     </div>
-    <div class="col-1"></div>
+    <div class="col-2"><span class="miniEmail">${data.user.handle}</span></div>
+  </div>
+  <div class="row tweetContentBody">
+    <div class="col-12">
+      <p class="tweetContent">${data.content.text}</p>
+    </div>
+  </div>
+  <div class="row tweetContentFoot">
+    <div class="col-custom-1"></div>
+    <div class="col-custom-22">
+      <p class="dateStamp">${data.created_at}</p>
+    </div>
+    <div class="col-custom-1"></div>
   </div>
 </div>
-<div class="col-3"></div>
-</div>`
-  console.log(html)
+<div class="col-1"></div>`
+  return html
   }
-  createTweetElement()
 $(document).ready(function() {
   $('#subButton').on('click', function() {
     console.log('fired')
   })
   $('#textAreaInput').keyup(charCount)
   $('#textAreaInput').keydown(charCount)
+  data.forEach(element => {
+    $('#appendTarget').append(createTweetElement(element))
+  });
+  
 })
