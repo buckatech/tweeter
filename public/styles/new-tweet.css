@@ -1,0 +1,52 @@
+.tweetHead{
+  border-top: solid;
+  border-right: solid;
+  border-left: solid;
+  border-width: 0.05rem;
+  padding-top: 0.3rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: #ebebeb;
+  border-color: #9b9b9bd3;
+}
+.tweetBody{
+  border-right: solid;
+  border-left: solid;
+  border-width: 0.05rem;
+  background-color: #ebebeb;
+  border-color: #9b9b9bd3;
+}
+.tweetFoot{
+  border-right: solid;
+  border-left: solid;
+  border-bottom: solid;
+  border-width: 0.05rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  background-color: #ebebeb;
+  border-color: #9b9b9bd3;
+}
+.inputText{
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.2rem 0.4rem;
+}
+.tweetButton{
+  margin-bottom: 1rem;
+}
+.btn-primary{
+  margin-bottom: 5px;
+}
+.tweetHeadBig{
+  font-size: 1.5rem;
+  border-bottom: solid;
+  border-bottom-width: 0.1rem;
+  margin-bottom: 5px;
+}
+.charCount{
+  float: right;
+  padding-right: 0.5rem;
+}
+#charLimit{
+  color: black;
+}

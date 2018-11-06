@@ -1,96 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <!-- Meta Information -->
-  <title>Tweeter - Home Page</title>
-  <!-- External CSS -->
-  <!-- Normalize -->
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-  <!-- Bootstrap -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-    crossorigin="anonymous">
-  <!-- Roboto Condensed Font Import -->
-  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i" rel="stylesheet">
-  <!-- App CSS -->
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <!-- Nav Bar CSS -->
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <!-- Nav Bar CSS -->
-  <link rel="stylesheet" href="/styles/main.css" type="text/css" />
-  <!-- External JS -->
-  <!-- Jquery -->
-  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/app.js"></script>
-</head>
-
-<body>
-  <!-- Just an image -->
-  <nav class="navbar navbar-custom">
-    <a class="navbar-brand" href="#">
-      <img class="headImg" src="/images/bird.png" alt="">
-      <span class="navbar-text align-middle">Tweeter</span>
-    </a>
-  </nav>
-  <!-- Page-specific (main) content here -->
-  <div class="container-fluid">
-    <div class="row headerRow">
-      <div class="col-3">
+  <head>
+    <!-- Home page-->
+    <title>Tweeter Home Page</title>
+    <!-- External CSS-->
+    <!-- Noramlize-->
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css">
+    <!-- Bootstrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Roboto Condensed Font Import-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i" rel="stylesheet">
+    <!-- App CSS-->
+    <link rel="stylesheet" href="/styles/layout.css" type="text/css">
+    <!-- Nav Bar CSS-->
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css">
+    <!-- New Tweet CSS-->
+    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css">
+    <!-- Tweet Body CSS-->
+    <link rel="stylesheet" href="/styles/tweetBody.css" type="text/css">
+    <!-- Bootstrap Grid CSS-->
+    <link rel="stylesheet" href="/styles/bootGrid.css" type="text/css">
+    <!-- External JS-->
+    <!-- Jquery-->
+    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+    <!-- Bootstrap-->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!-- App JS-->
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+  <body>
+    <!-- Navbar-->
+    <nav class="navbar navbar-custom"><a class="navbar-brand" href="#"><img class="headImg" src="/images/bird.png" alt=""><span class="navbar-text align-middle">Bird</span></a></nav>
+    <div class="container-fluid">
+      <div class="row headerRow">
+        <div class="col-3"></div>
+        <div class="col-6"></div>
+        <div class="col-3"></div>
       </div>
-      <div class="col-6">
-      </div>
-      <div class="col-3">
-      </div>
-    </div>
-    <div class="row headerRow2">
-      <div class="col-3">
-      </div>
-      <div class="col-6">
-        <div class="row subRow">
-          <div class="col-1">
-          </div>
-          <div class="col-10">
-            <div class="row tweetHeadRow">
-              <div class="col-custom-1 tweetHeadSmall">
+      <div class="row headerRow2">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="row subrow">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="row tweetHead">
+                <div class="col-custom-1 tweetHeadSmall"></div>
+                <div class="col-custom-22 tweetHeadBig">
+                  <h2>ComposeTweet</h2>
+                </div>
+                <div class="col-custom-1 tweetHeadSmall"></div>
               </div>
-              <div class="col-custom-22 tweetHeadBig">
-                <h2>Compose Tweet</h2>
+              <div class="row tweetBody">
+                <div class="col-custom-1 tweetBodySmall"></div>
+                <div class="col-custom-22 tweetBodyBig">
+                  <textarea class="inputText" id="textAreaInput" placeholder="What are you humming about?"></textarea>
+                </div>
+                <div class="col-custom-1 tweetBodySmall"></div>
               </div>
-              <div class="col-custom-1 tweetHeadSmall">
+              <div class="row tweetFoot">
+                <div class="col-custom-1 tweetBodySmall"></div>
+                <div class="col-custom-22 tweetBodyBig">
+                  <button class="tweetButton" id="subButton">Tweet</button><span class="charCount" id="charLimit">140</span>
+                </div>
+                <div class="col-custom-1 tweetFootSmall"></div>
               </div>
             </div>
-            <div class="row tweetBodyRow">
-              <div class="col-custom-1 tweetBodySmall">
-              </div>
-              <div class="col-custom-22 tweetBodyBig">
-                <textarea class="inputText" placeholder="What's are you humming about?"></textarea>
-              </div>
-              <div class="col-custom-1 tweetBodySmall">
-              </div>
-            </div>
-            <div class="row tweetFootRow">
-              <div class="col-custom-1 tweetFootSmall">
-              </div>
-              <div class="col-custom-22 tweetFootBig">
-                <button class="tweetButton">Tweet</button>
-                <span class="charCount">140</span>
-              </div>
-              <div class="col-custom-1 tweetFootSmall">
-              </div>
-            </div>
-          </div>
-          <div class="col-1">
           </div>
         </div>
+        <div class="col-3"></div>
       </div>
-      <div class="col-3">
+      <div class="row breakRow">
+        <div class="col-3"></div>
+        <div class="col-6"></div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row BodyRow1">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <div class="row subrow">
+            <div class="col-1"></div>
+            <div class="col-10">
+              <div class="row tweetBodyRow tweetHead">
+                <div class="col-2"><img class="bodyImg" src="/images/bird.png" alt=""></div>
+                <div class="col-8">
+                  <h3 class="tweetH3">Bill Fields</h3>
+                </div>
+                <div class="col-2"><span class="miniEmail">@Username</span></div>
+              </div>
+              <div class="row tweetBody tweetBodyRow2">
+                <div class="col-12">
+                  <p class="tweetContent">Little Tweet Here    </p>
+                </div>
+              </div>
+              <div class="row tweetFoot tweetFootRow2">
+                <div class="col-custom-1"></div>
+                <div class="col-custom-22">
+                  <p class="dateStamp">10 Days Ago</p>
+                </div>
+                <div class="col-custom-1"></div>
+              </div>
+            </div>
+            <div class="col-1"></div>
+          </div>
+        </div>
+        <div class="col-3"></div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

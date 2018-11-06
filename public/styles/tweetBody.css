@@ -1,0 +1,37 @@
+.bodyImg{
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: blue;
+  margin-top: .3rem;
+  border-radius: 0.4rem;
+}
+.tweetBodyRow{
+  height: 5rem;
+}
+.tweetBodyRow2{
+  height: 6rem;
+}
+.tweetFootRow2{
+  height: 2.1rem;
+  background-color: white;
+  border-top: solid;
+  border-top-width: 0.05rem; 
+  border-top-color: rgba(216, 216, 216, 0.918);
+}
+.miniEmail{
+  margin-top: .3rem;
+  float: right;
+}
+.breakRow{
+  height: 3rem;
+}
+.tweetH3{
+  margin-top:.3rem;
+}
+.tweetContent{
+  font-size: 1.2rem;
+}
+.dateStamp{
+  margin-top: 0.3rem;
+  color: rgba(48, 48, 48, 0.781);
+}
