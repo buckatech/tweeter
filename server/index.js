@@ -8,7 +8,7 @@ const bodyParser    = require("body-parser");
 const app           = express();
 
 const MongoClient = require("mongodb").MongoClient;
-const MONGODB_URI = 'mongodb://tweetlhl:lhllhl1@ds155213.mlab.com:55213/tweetlhl';
+const MONGODB_URI = 'mongodb://buck:buck123@ds155213.mlab.com:55213/tweetlhl';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -18,7 +18,7 @@ MongoClient.connect(MONGODB_URI, (err, client) => {
       console.error(`Failed to connect: ${MONGODB_URI}`);
       throw err;
   } 
-  let db = client.db('tweeter');
+  let db = client.db('tweetlhl');
 
 
 
