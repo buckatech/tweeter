@@ -47,12 +47,14 @@ function createTweetElement(data) {
 function load() {
   $.getJSON("/tweets", function(data) {
     data.forEach(element => {
-      $("#appendTarget").append(createTweetElement(element));
+      $("#appendTarget").prepend(createTweetElement(element));
     });
   });
 }
 //Jqury function
 $(document).ready(function() {
+  // loads current DB
+  load();
   // Counts characters
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
@@ -75,6 +77,9 @@ $(document).ready(function() {
       method: "POST",
       data: serialized,
     }).then(function(){
+      $('#textAreaInput').val('');
+      $('#appendTarget').empty();
+      $('#charLimit').text("140")
       return $.ajax('/tweets')
     }).then(load())
   });
