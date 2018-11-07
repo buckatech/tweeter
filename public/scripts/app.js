@@ -43,14 +43,19 @@ function createTweetElement(data) {
 `;
   return template;
 }
+function load() {
+  $.getJSON("/tweets", function(data) {
+    data.forEach(element => {
+      $("#appendTarget").append(createTweetElement(element));
+    });
+  });
+}
 $(document).ready(function() {
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
-
   $("#target").submit(function(event)   {
     alert("Handler for .submit() called.");
     event.preventDefault();
-    let raw = $(this)
     let serialized = $(this).serialize();
     if (serialized.length - 14 > 140) {
       alert("bad length");
@@ -59,11 +64,11 @@ $(document).ready(function() {
       alert("no content");
       return false;
     }
-    $.post( "/tweets", { name: "John", time: "2pm" } );
-  });
-  $.getJSON("/tweets", function(data) {
-    data.forEach(element => {
-      $("#appendTarget").append(createTweetElement(element));
-    });
+    $.ajax('/tweets', {
+      method: "POST",
+      data: serialized,
+    }).then(function(){
+      return $.ajax('/tweets')
+    }).then(load())
   });
 });
