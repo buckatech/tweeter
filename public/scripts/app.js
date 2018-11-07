@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Change .css to change the class instead of targeting css directly
+// Checks if character uner 140, and turns text red if over
 function charCount() {
   let cs = 140 - $(this).val().length;
   if (cs < 0) {
@@ -14,7 +14,7 @@ function charCount() {
   }
   $("#charLimit").text(cs);
 }
-// check temp lit spacing
+// Formats new tweet as HTML
 function createTweetElement(data) {
   let template = `
   <div class="col-1"></div>
@@ -43,6 +43,7 @@ function createTweetElement(data) {
 `;
   return template;
 }
+// Loads all documents in collection from MongoDB
 function load() {
   $.getJSON("/tweets", function(data) {
     data.forEach(element => {
@@ -50,13 +51,18 @@ function load() {
     });
   });
 }
+//Jqury function
 $(document).ready(function() {
+  // Counts characters
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
+
+  // When text box is submitted
   $("#target").submit(function(event)   {
-    alert("Handler for .submit() called.");
     event.preventDefault();
+    // Set variable as input text
     let serialized = $(this).serialize();
+    // Checks length of string vs 140 and handles err accordingly
     if (serialized.length - 14 > 140) {
       alert("bad length");
       return false;
@@ -64,6 +70,7 @@ $(document).ready(function() {
       alert("no content");
       return false;
     }
+    // Posts Tweet to database then gets list of tweets to display
     $.ajax('/tweets', {
       method: "POST",
       data: serialized,
