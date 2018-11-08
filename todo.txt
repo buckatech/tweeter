@@ -1,4 +1,3 @@
-Hunt down compose icon (minor)
 Add Jquery Err handling
 Optomize/Refactor CSS and HTML
 Autoselect textarea

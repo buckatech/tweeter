@@ -61,8 +61,10 @@ $(document).ready(function() {
   // Counts characters
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
-  $("#textAcordButton").click(function() {
-    $("#textAreaInput") .focus();
+  $(".collapse").on('shown.bs.collapse', function(event) {
+    if ($(this).is(event.target)) {
+      $("#textAreaInput").focus()
+    }
   })
   // When text box is submitted
   $("#target").submit(function(event)   {
@@ -71,10 +73,10 @@ $(document).ready(function() {
     let serialized = $(this).serialize();
     // Checks length of string vs 140 and handles err accordingly
     if (serialized.length - 14 > 140) {
-      alert("bad length");
+      $( "small:first" ).html('Tweet must be less than 140 characters').addClass("err");
       return false;
     } else if (!/\S/.test($("#textAreaInput").val())) {
-      alert("no content");
+      $( "small:first" ).html('Tweet must contain characters').addClass("err");
       return false;
     }
     // Posts Tweet to database then gets list of tweets to display
@@ -85,6 +87,7 @@ $(document).ready(function() {
       $('#textAreaInput').val('');
       $('#appendTarget').empty();
       $('#charLimit').text("140")
+      $('small:first').empty()
       return $.ajax('/tweets')
     }).then(load())
   });

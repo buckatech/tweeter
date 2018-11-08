@@ -50,3 +50,7 @@
 #charLimit{
   color: black;
 }
+.err{
+  color: red;
+  padding-left: 1rem;
+}
