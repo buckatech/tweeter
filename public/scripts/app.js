@@ -20,7 +20,7 @@ function createTweetElement(data) {
   <div class="col-1"></div>
   <div class="col-10 opacParent">
     <div class="row tweetContentHead">
-      <div class="col-2"><img class="bodyImg" src="/images/bird.png" alt=""></div>
+      <div class="col-2"><img class="bodyImg" src="${data.user.avatars.small}" alt=""></div>
       <div class="col-8">
         <h3 class="tweetH3">${data.user.name}</h3>
       </div>
@@ -35,6 +35,9 @@ function createTweetElement(data) {
       <div class="col-custom-1"></div>
       <div class="col-custom-22">
         <p class="dateStamp">${data.created_at}</p>
+        <div class="iconDiv">
+          <i class="fas fa-flag icon"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i>
+        </div>
       </div>
       <div class="col-custom-1"></div>
     </div>
@@ -58,7 +61,9 @@ $(document).ready(function() {
   // Counts characters
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
-
+  $("#textAcordButton").click(function() {
+    $("#textAreaInput") .focus();
+  })
   // When text box is submitted
   $("#target").submit(function(event)   {
     event.preventDefault();

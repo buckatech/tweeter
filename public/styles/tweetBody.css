@@ -57,7 +57,20 @@
   border-radius: 0.5rem;
   z-index: 1;
 }
+.iconDiv{
+  float: right;
+  margin-top: -2.4rem;
+  padding-right: 0.2rem;
+  opacity: 0;
+}
 .opacParent:hover{
   opacity: 1;
   border-color: black;
+}
+.opacParent:hover .iconDiv{
+  opacity: 1;
+}
+.icon{
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
 }

@@ -25,8 +25,13 @@
   align-items: center;
   font-size: 1.4rem;
 }
-.btn-outline-primary:hover{
-  background-color: white;
-  color: black;
-  border-color: black;
+/* importants are used to override bootstrap defualt behaviors */
+.btn-outline-primary:hover, .btn-outline-primary:active {
+  color: black !important;
+  background-color: white !important;
+  border-color: black !important;
+}
+.btn-outline-primary:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
