@@ -16,6 +16,7 @@ function charCount() {
 }
 // Formats new tweet as HTML
 function createTweetElement(data) {
+  if (data.likes) {
   let template = `
   <div class="col-1"></div>
   <div class="col-10 opacParent">
@@ -36,7 +37,7 @@ function createTweetElement(data) {
       <div class="col-custom-22">
         <p class="dateStamp">${data.created_at}</p>
         <div class="iconDiv">
-          <i class="fas fa-flag icon"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i>
+          <i class="fas fa-flag icon" id="flag"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i>${data.likes}
         </div>
       </div>
       <div class="col-custom-1"></div>
@@ -45,10 +46,46 @@ function createTweetElement(data) {
   <div class="col-1"></div>
 `;
   return template;
+  } else {
+      let template = `
+      <div class="col-1"></div>
+      <div class="col-10 opacParent">
+        <div class="row tweetContentHead">
+          <div class="col-2"><img class="bodyImg" src="${data.user.avatars.small}" alt=""></div>
+          <div class="col-8">
+            <h3 class="tweetH3">${data.user.name}</h3>
+          </div>
+          <div class="col-2"><span class="miniEmail">${data.user.handle}</span></div>
+        </div>
+        <div class="row tweetContentBody">
+          <div class="col-12">
+            <p class="tweetContent">${data.content.text}</p>
+          </div>
+        </div>
+        <div class="row tweetContentFoot">
+          <div class="col-custom-1"></div>
+          <div class="col-custom-22">
+            <p class="dateStamp">${data.created_at}</p>
+            <div class="iconDiv">
+              <i class="fas fa-flag icon" id="flag"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i>
+            </div>
+          </div>
+          <div class="col-custom-1"></div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    `;
+    return template
+  }
 }
+
 // Loads all documents in collection from MongoDB
 function load() {
-  $.getJSON("/tweets", function(data) {
+  $.getJSON("/tweets", function(data) {     
+  $('#textAreaInput').val('');
+  $('#appendTarget').empty();
+  $('#charLimit').text("140")
+  $('small:first').empty()
     data.forEach(element => {
       $("#appendTarget").prepend(createTweetElement(element));
     });
@@ -66,6 +103,17 @@ $(document).ready(function() {
       $("#textAreaInput").focus()
     }
   })
+  $("#appendTarget").on('click', 'i.fa-heart', function() {
+    let show = $(this).parents(':has(.dateStamp)').first().find('.dateStamp').text();
+    console.log(show)
+    $.ajax('/tweets/inc', {
+      method: "POST",
+      data: {qdate: show},
+    }).then(function(){
+      return $.ajax('/tweets')
+    }).then(load())
+  });
+  
   // When text box is submitted
   $("#target").submit(function(event)   {
     event.preventDefault();
@@ -84,10 +132,6 @@ $(document).ready(function() {
       method: "POST",
       data: serialized,
     }).then(function(){
-      $('#textAreaInput').val('');
-      $('#appendTarget').empty();
-      $('#charLimit').text("140")
-      $('small:first').empty()
       return $.ajax('/tweets')
     }).then(load())
   });

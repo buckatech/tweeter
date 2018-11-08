@@ -20,8 +20,6 @@ MongoClient.connect(MONGODB_URI, (err, client) => {
   } 
   let db = client.db('tweetlhl');
 
-
-
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(db);
@@ -31,7 +29,6 @@ const DataHelpers = require("./lib/data-helpers.js")(db);
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 // Mount the tweets routes at the "/tweets" path prefix:
 app.use("/tweets", tweetsRoutes);
-app.use("/inc", incRoutes)
 });
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

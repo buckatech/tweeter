@@ -5,7 +5,26 @@ const userHelper    = require("../lib/util/user-helper")
 const express       = require('express');
 const tweetsRoutes  = express.Router();
 
+
+
 module.exports = function(DataHelpers) {
+  tweetsRoutes.post("/inc", function(req,res) {
+    if (!req.body) {
+      res.status(400).json({ error: 'invalid request: no data in POST body'});
+      return;
+    }
+    console.log(req.body)
+    let date = req.body.qdate
+    console.log(date)
+    DataHelpers.setLike(date, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
+      }
+    })
+  })
+
   tweetsRoutes.get("/", function(req, res) {
     DataHelpers.getTweets((err, tweets) => {
       if (err) {
