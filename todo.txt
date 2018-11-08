@@ -1,5 +1,4 @@
 Hunt down compose icon (minor)
-Add flag like and retweet
 Add Jquery Err handling
 Optomize/Refactor CSS and HTML
 Autoselect textarea
