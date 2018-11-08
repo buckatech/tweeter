@@ -4,13 +4,8 @@
 
 // Defines helper functions for saving and getting tweets, using the database `db`
 module.exports = function makeDataHelpers(db) {
+  
   return {
-    setLike: function(date) {
-        db.collection("tweets").update(
-          { "created_at": date },
-          { $inc: { likes: 1 } }
-      );
-    },
     // Saves a tweet to `db`
     saveTweet: function(newTweet, callback) {
         db.collection("tweets").insertOne(newTweet);
