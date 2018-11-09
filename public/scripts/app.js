@@ -1,9 +1,3 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
 // Checks if character uner 140, and turns text red if over
 function charCount() {
   let cs = 140 - $(this).val().length;
@@ -81,7 +75,8 @@ function createTweetElement(data) {
 
 // Loads all documents in collection from MongoDB
 function load() {
-  $.getJSON("/tweets", function(data) {     
+  $.getJSON("/tweets", function(data) {
+    // Clear fields     
   $('#textAreaInput').val('');
   $('#appendTarget').empty();
   $('#charLimit').text("140")
@@ -98,11 +93,13 @@ $(document).ready(function() {
   // Counts characters
   $("#textAreaInput").keyup(charCount);
   $("#textAreaInput").keydown(charCount);
+  // Focus on textarea after it is shown
   $(".collapse").on('shown.bs.collapse', function(event) {
     if ($(this).is(event.target)) {
       $("#textAreaInput").focus()
     }
   })
+  // Like Counter
   $("#appendTarget").on('click', 'i.fa-heart', function() {
     let val = $(this).next().text()
     if (val == 1) {
@@ -110,10 +107,11 @@ $(document).ready(function() {
     } else {
       val = '1'
     }
-    let show = $(this).parents(':has(.dateStamp)').first().find('.dateStamp').text();
+    // dtime is targeting the datestamp relative to the clicked heart
+    let dtime = $(this).parents(':has(.dateStamp)').first().find('.dateStamp').text();
     $.ajax('/tweets/inc', {
       method: "POST",
-      data: {qdate: show, like: val},
+      data: {qdate: dtime, like: val},
     }).then(function(){
       return $.ajax('/tweets')
     }).then(load())
@@ -128,6 +126,7 @@ $(document).ready(function() {
     if (serialized.length - 14 > 140) {
       $( "small:first" ).html('Tweet must be less than 140 characters').addClass("err");
       return false;
+      // Regex for area has characters
     } else if (!/\S/.test($("#textAreaInput").val())) {
       $( "small:first" ).html('Tweet must contain characters').addClass("err");
       return false;
@@ -140,14 +139,3 @@ $(document).ready(function() {
     }).then(this.noop().delay(300))
   });
 });
-// function load() {
-//   $.getJSON("/tweets", function(data) {     
-//   $('#textAreaInput').val('');
-//   $('#appendTarget').empty();
-//   $('#charLimit').text("140")
-//   $('small:first').empty()
-//     data.forEach(element => {
-//       $("#appendTarget").prepend(createTweetElement(element));
-//     });
-//   });
-// }

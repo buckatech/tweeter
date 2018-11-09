@@ -13,10 +13,8 @@ module.exports = function(DataHelpers) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
       return;
     }
-    console.log(req.body)
-    let date = req.body.qdate
-    let like = req.body.like
-    console.log(like + 'route')
+    const date = req.body.qdate
+    const like = req.body.like
     DataHelpers.setLike(date, like, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -43,9 +41,6 @@ module.exports = function(DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
-    console.log(user.name)
-    console.log(user.handle)
-    console.log(user.avatars.small)
     const tweet = {
       user: user,
       content: {
