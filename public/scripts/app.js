@@ -137,7 +137,7 @@ $(document).ready(function() {
       method: "POST",
       data: serialized,
       complete: load
-    });
+    }).then(this.noop().delay(300))
   });
 });
 // function load() {
