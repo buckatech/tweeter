@@ -37,7 +37,7 @@ function createTweetElement(data) {
       <div class="col-custom-22">
         <p class="dateStamp">${data.created_at}</p>
         <div class="iconDiv">
-          <i class="fas fa-flag icon" id="flag"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i>${data.likes}
+          <i class="fas fa-flag icon" id="flag"></i><i class="fas fa-retweet icon"></i><i class="fas fa-heart icon"></i><i class="likeCount">${data.likes}</i>
         </div>
       </div>
       <div class="col-custom-1"></div>
@@ -104,11 +104,16 @@ $(document).ready(function() {
     }
   })
   $("#appendTarget").on('click', 'i.fa-heart', function() {
+    let val = $(this).next().text()
+    if (val == 1) {
+      val = '0'
+    } else {
+      val = '1'
+    }
     let show = $(this).parents(':has(.dateStamp)').first().find('.dateStamp').text();
-    console.log(show)
     $.ajax('/tweets/inc', {
       method: "POST",
-      data: {qdate: show},
+      data: {qdate: show, like: val},
     }).then(function(){
       return $.ajax('/tweets')
     }).then(load())
@@ -131,8 +136,18 @@ $(document).ready(function() {
     $.ajax('/tweets', {
       method: "POST",
       data: serialized,
-    }).then(function(){
-      return $.ajax('/tweets')
-    }).then(load())
+      complete: load
+    });
   });
 });
+// function load() {
+//   $.getJSON("/tweets", function(data) {     
+//   $('#textAreaInput').val('');
+//   $('#appendTarget').empty();
+//   $('#charLimit').text("140")
+//   $('small:first').empty()
+//     data.forEach(element => {
+//       $("#appendTarget").prepend(createTweetElement(element));
+//     });
+//   });
+// }

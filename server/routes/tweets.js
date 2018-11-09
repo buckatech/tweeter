@@ -15,8 +15,9 @@ module.exports = function(DataHelpers) {
     }
     console.log(req.body)
     let date = req.body.qdate
-    console.log(date)
-    DataHelpers.setLike(date, (err) => {
+    let like = req.body.like
+    console.log(like + 'route')
+    DataHelpers.setLike(date, like, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
@@ -42,6 +43,9 @@ module.exports = function(DataHelpers) {
     }
 
     const user = req.body.user ? req.body.user : userHelper.generateRandomUser();
+    console.log(user.name)
+    console.log(user.handle)
+    console.log(user.avatars.small)
     const tweet = {
       user: user,
       content: {
