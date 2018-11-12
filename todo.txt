@@ -1,3 +1,2 @@
 Add Jquery Err handling
 Optomize/Refactor CSS and HTML
-Autoselect textarea
