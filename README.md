@@ -20,7 +20,7 @@ This repository is the starter code for the project: Students will fork and clon
 git clone https://github.com/buckatech/tweeter
 ```
 ```
-cd Return-of-the-tiny-app
+cd tweeter
 ```
 ```
 npm i
